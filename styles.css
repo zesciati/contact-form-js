@@ -1,0 +1,354 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+
+/* CSS DESIGN USING MOBILE-FIRST APPROACH */
+:root {
+  /* Typography */
+  --FF: "Karla", sans-serif;
+  --FS: 0.8rem;
+  --FSH: 1rem;
+  /* Colors */
+  /* Primary */
+  --Green-200: hsl(148, 38%, 91%);
+  --Green-600: hsl(169, 82%, 27%);
+  --Red: hsl(0, 66%, 54%);
+  /* Neutral */
+  --White: hsl(0, 0%, 100%);
+  --Grey-500: hsl(186, 15%, 59%);
+  --Grey-900: hsl(187, 24%, 22%);
+
+  /* comments */
+  /* --white: hsl(0, 100%, 100%);
+  --Purple-100: hsl(275, 100%, 97%);
+  --Purple-600: hsl(292, 16%, 49%);
+  --Purple-950: hsl(292, 42%, 14%);
+  --darkorchid: hsl(280, 61%, 50%);
+  --purple: #645cff;
+  --grey-900: #0f172a;
+  --grey-50: #f8fafc;  */
+}
+
+/* CSS RESET */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+  overflow: scroll;
+  font-size: 100%;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: var(--FSH);
+  margin: 0;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: capitalize;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  /* transition: background-color 3s ease-in-out; */
+  /* transition: color 3s ease-in-out; */
+  min-height: 100vh;
+  line-height: 1;
+  font-optical-sizing: auto;
+  background-color: var(--Green-200);
+  color: var(--Grey-900);
+  font-family: var(--FF);
+  font-size: var(--FS);
+  font-weight: 400;
+  display: flex;
+  padding: 2rem 0;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* content style */
+.container {
+  max-width: 900px;
+  width: 90%;
+  border-radius: 5px;
+  background-color: var(--White);
+  box-shadow: 0 10px 15px -3px rgba(61, 8, 8, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  padding: 1.5rem 1rem;
+  flex-direction: column;
+}
+
+.container h1 {
+  margin-bottom: 2rem;
+}
+
+.name-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* firstname */
+.firstname-container {
+  width: 100%;
+}
+.firstname-container p {
+  margin-bottom: 0.5rem;
+}
+
+.firstname-container input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.6rem;
+  border: solid var(--Grey-500);
+}
+
+.firstname-container input:focus,
+.firstname-container input:active,
+.firstname-container input:hover {
+  cursor: pointer;
+  border: solid var(--Green-600);
+}
+/* lastname */
+.lastname-container {
+  width: 100%;
+}
+.lastname-container p {
+  margin-bottom: 0.5rem;
+}
+
+.lastname-container input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.6rem;
+  border: solid var(--Grey-500);
+}
+
+.lastname-container input:focus,
+.lastname-container input:active,
+.lastname-container input:hover {
+  cursor: pointer;
+  border: solid var(--Green-600);
+}
+/* email address */
+.email-container {
+  margin-top: 0.8rem;
+  width: 100%;
+}
+.email-container p {
+  margin-bottom: 0.5rem;
+}
+
+.email-container input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.6rem;
+  border: solid var(--Grey-500);
+}
+
+.email-container input:focus,
+.email-container input:active,
+.email-container input:hover {
+  cursor: pointer;
+  border: solid var(--Green-600);
+}
+/* radio button*/
+.radioinput-container p {
+  margin: 0.8rem 0;
+}
+
+.queryflex {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+.general-container {
+  border-radius: 5px;
+  border: 2px solid var(--Grey-500);
+  width: 100%;
+  padding: 0.2rem 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+input[type="radio"] {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.general-container:focus,
+.general-container:active {
+  cursor: pointer;
+  background-color: var(--Green-200);
+}
+
+.general-container:hover {
+  cursor: pointer;
+  border: solid var(--Green-600);
+}
+
+/* message*/
+.message-container {
+  margin-top: 0.8rem;
+  width: 100%;
+}
+.message-container p {
+  margin-bottom: 0.5rem;
+}
+
+.message-container input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.6rem 0.6rem 5rem 0.6rem;
+  border: solid var(--Grey-500);
+}
+
+.message-container input:focus,
+.message-container input:active,
+.message-container input:hover {
+  cursor: pointer;
+  border: solid var(--Green-600);
+}
+
+/* checkbox */
+
+.checkbox-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.btn {
+  padding: 0.6rem;
+  background-color: var(--Green-600);
+  color: var(--White);
+  border: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--Grey-900);
+}
+
+.error {
+  color: var(--Red);
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.sucess-state {
+  border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background-color: var(--Grey-900);
+  padding: 0.8rem;
+  transition: 0.3s ease-in-out all;
+  max-width: 900px;
+  width: 90%;
+  display: none;
+}
+
+.success-img {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.success-img p {
+  color: var(--White);
+  align-self: center;
+}
+
+.sucess-state p {
+  color: var(--White);
+  margin-top: 0.5rem;
+}
+/* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease-in-out all; */
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  body {
+    padding: 5rem 0;
+  }
+
+  .container {
+    max-width: 500px;
+  }
+
+  .name-container {
+    flex-direction: row;
+  }
+
+  .queryflex {
+    flex-direction: row;
+  }
+
+  .sucess-state {
+    max-width: 500px;
+  }
+}

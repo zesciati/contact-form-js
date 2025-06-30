@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
+    <title>Contact-Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <article class="sucess-state">
+      <div class="success-img">
+        <img src="/images/icon-success-check.svg" alt="" />
+        <p>Message Sent!</p>
+      </div>
+      <p>Thanks for completing the form. We'll be in touch soon!</p>
+    </article>
+    <form action="" class="container">
+      <h1>Contact Us</h1>
+      <article class="name-container">
+        <!-- first-name -->
+        <div class="firstname-container">
+          <p>First Name</p>
+          <input type="text" name="first-name" class="firstnameInput" />
+          <p class="error"></p>
+        </div>
+        <!-- last-name -->
+        <div class="lastname-container">
+          <p>Last Name</p>
+          <input type="text" name="last-name" class="lastnameInput" />
+          <p class="error"></p>
+        </div>
+      </article>
+      <!-- email address -->
+      <div class="email-container">
+        <p>Email Address</p>
+        <input type="text" name="email" class="emailInput" />
+        <p class="error"></p>
+      </div>
+      <!-- Query Type/radio input -->
+      <article class="radioinput-container">
+        <p>Query Type</p>
+        <div class="queryflex">
+          <div class="general-container">
+            <!-- General Enquiry -->
+            <input type="radio" name="query" value="enquiry" />
+            <p>General Enquiry</p>
+          </div>
+          <!-- Support Request -->
+          <div class="general-container">
+            <input type="radio" name="query" value="request" />
+            <p>Support Request</p>
+          </div>
+        </div>
+      </article>
+      <!-- message-->
+      <div class="message-container">
+        <p>Message</p>
+        <input type="text" name="message" class="messageInput" />
+        <p class="error"></p>
+      </div>
+      <!-- consent input checkbox -->
+      <div class="checkbox-container">
+        <input type="checkbox" name="consent" />
+        <p>I consent to being contacted by the team</p>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
