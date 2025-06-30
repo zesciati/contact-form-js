@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <article class="sucess-state">
-      <div class="success-img">
-        <img src="/images/icon-success-check.svg" alt="" />
-        <p>Message Sent!</p>
-      </div>
-      <p>Thanks for completing the form. We'll be in touch soon!</p>
-    </article>
+    <!-- contact form details -->
     <form action="" class="container">
+      <article class="sucess-state">
+        <div class="success-img">
+          <img src="/images/icon-success-check.svg" alt="" />
+          <p>Message Sent!</p>
+        </div>
+        <p>Thanks for completing the form. We'll be in touch soon!</p>
+      </article>
       <h1>Contact Us</h1>
       <article class="name-container">
         <!-- first-name -->
@@ -44,12 +45,12 @@
           <div class="general-container">
             <!-- General Enquiry -->
             <input type="radio" name="query" value="enquiry" />
-            <p>General Enquiry</p>
+            <label>General Enquiry</label>
           </div>
           <!-- Support Request -->
           <div class="general-container">
             <input type="radio" name="query" value="request" />
-            <p>Support Request</p>
+            <label>Support Request</label>
           </div>
         </div>
       </article>
@@ -62,7 +63,7 @@
       <!-- consent input checkbox -->
       <div class="checkbox-container">
         <input type="checkbox" name="consent" />
-        <p>I consent to being contacted by the team</p>
+        <label>I consent to being contacted by the team</label>
       </div>
       <button type="submit" class="btn">Submit</button>
     </form>

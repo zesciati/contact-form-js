@@ -16,7 +16,8 @@ const successState = document.querySelector(".sucess-state");
 // firstName logic
 const validateFirstName = () => {
   const value = firstName.value.trim();
-  if (value === "") {
+  const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+  if (!namePattern.test(value) || value === "") {
     firstNameError.textContent = " This field is required ";
     firstNameError.style.display = "block";
     return false;
@@ -30,7 +31,9 @@ const validateFirstName = () => {
 // lastName logic
 const validateLastName = () => {
   const value = lastName.value.trim();
-  if (value === "") {
+  const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+
+  if (!namePattern.test(value) || value === "") {
     lastNameError.textContent = " This field is required ";
     lastNameError.style.display = "block";
     return false;

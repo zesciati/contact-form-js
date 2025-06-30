@@ -131,6 +131,7 @@ select {
   display: flex;
   padding: 1.5rem 1rem;
   flex-direction: column;
+  position: relative;
 }
 
 .container h1 {
@@ -221,7 +222,8 @@ select {
   border-radius: 5px;
   border: 2px solid var(--Grey-500);
   width: 100%;
-  padding: 0.2rem 0.8rem;
+  padding: 0.9rem;
+  /* padding: 0.2rem 0.8rem; */
   display: flex;
   gap: 0.5rem;
 }
@@ -303,9 +305,14 @@ input[type="checkbox"] {
   background-color: var(--Grey-900);
   padding: 0.8rem;
   transition: 0.3s ease-in-out all;
-  max-width: 900px;
+  max-width: 400px;
   width: 90%;
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
 .success-img {
@@ -346,9 +353,5 @@ input[type="checkbox"] {
 
   .queryflex {
     flex-direction: row;
-  }
-
-  .sucess-state {
-    max-width: 500px;
   }
 }
