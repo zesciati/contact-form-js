@@ -18,7 +18,7 @@ const validateFirstName = () => {
   const value = firstName.value.trim();
   const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
   if (!namePattern.test(value) || value === "") {
-    firstNameError.textContent = " This field is required ";
+    firstNameError.textContent = "Please enter a valid name";
     firstNameError.style.display = "block";
     return false;
   } else {
@@ -34,7 +34,7 @@ const validateLastName = () => {
   const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ]+([ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
 
   if (!namePattern.test(value) || value === "") {
-    lastNameError.textContent = " This field is required ";
+    lastNameError.textContent = " Please enter a valid name ";
     lastNameError.style.display = "block";
     return false;
   } else {
