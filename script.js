@@ -1,8 +1,10 @@
+// ubah ke # karena id
 const form = document.querySelector("form");
-const firstName = document.querySelector(".firstnameInput");
-const lastName = document.querySelector(".lastnameInput");
-const email = document.querySelector(".emailInput");
-const message = document.querySelector(".messageInput");
+const firstName = document.querySelector('#firstnameInput');
+const lastName = document.querySelector('#lastnameInput');
+const email = document.querySelector('#emailInput');
+const message = document.querySelector('#messageInput');
+const queryType = document.querySelector('input[name="query"]:checked');
 
 // error
 const firstNameError = firstName.nextElementSibling;
@@ -80,8 +82,10 @@ email.addEventListener("input", validateEmail);
 message.addEventListener("input", validateMessage);
 
 // form submit
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
+
+  //disable all form interfaces
 
   const isFirstNameValid = validateFirstName();
   const isLastNameValid = validateLastName();
@@ -89,11 +93,29 @@ form.addEventListener("submit", function (e) {
   const isMessageValid = validateMessage();
 
   if (isFirstNameValid && isLastNameValid && isEmailValid && isMessageValid) {
-    successState.style.display = "block";
-    form.reset();
 
-    setTimeout(() => {
-      successState.style.display = "none";
-    }, 3000);
+    const api = await fetch('http://localhost:8045/items/form_contact',{
+      method:"POST",
+      headers:{
+        Authorization:"Bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e"
+      },
+      body:{
+        "first_name": firstName ,
+        "last_name": lastName,
+        "email": "bobi123@gmail.com",
+        "message":"Hello my name is Bobi saputra living in indonesia",
+        "query_type" : "request"
+    }
+    });
+
+    if(api.ok){
+      successState.style.display = "block";
+      form.reset();
+
+      setTimeout(() => {
+        successState.style.display = "none";
+      }, 3000);
+    }
+    
   }
 });
