@@ -18,6 +18,13 @@ const messageError = message.nextElementSibling;
 // success
 const successState = document.querySelector(".sucess-state");
 
+
+// REVIEW cors
+app.use(cors({
+  origin: "http:127.0.0.1:5500",
+})
+)
+
 // firstName logic
 const validateFirstName = () => {
   const value = firstName.value.trim();
@@ -103,7 +110,7 @@ form.addEventListener("submit", async function (e) {
       method:"POST",
       headers:{
         // static token CMS 
-        Authorization:"Bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e"
+        Authorization:"Bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e",
       },
       body:{
         // key name from cms form contact field -> images\form-contact-field.jpeg
