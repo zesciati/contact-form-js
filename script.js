@@ -1,10 +1,13 @@
-// ubah ke # karena id
+// ubah ke # karena id, id is more saver than class
 const form = document.querySelector("form");
 const firstName = document.querySelector('#firstnameInput');
 const lastName = document.querySelector('#lastnameInput');
 const email = document.querySelector('#emailInput');
 const message = document.querySelector('#messageInput');
-const queryType = document.querySelector('input[name="query"]:checked');
+const queryType = document.querySelector('input[name="query"]:checked'); // radio button
+
+//  submit button
+const submitBtn = document.querySelector('tombol'); 
 
 // error
 const firstNameError = firstName.nextElementSibling;
@@ -94,17 +97,22 @@ form.addEventListener("submit", async function (e) {
 
   if (isFirstNameValid && isLastNameValid && isEmailValid && isMessageValid) {
 
+    // Accessing CMS through API 
     const api = await fetch('http://localhost:8045/items/form_contact',{
+      // mengirimkan data terbaru ke cms
       method:"POST",
       headers:{
+        // static token CMS 
         Authorization:"Bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e"
       },
       body:{
+        // key name from cms form contact field -> images\form-contact-field.jpeg
+        // value from id 
         "first_name": firstName ,
         "last_name": lastName,
-        "email": "bobi123@gmail.com",
-        "message":"Hello my name is Bobi saputra living in indonesia",
-        "query_type" : "request"
+        "email": email,
+        "message":message,
+        "query_type" : queryType
     }
     });
 
