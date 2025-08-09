@@ -7,7 +7,7 @@ const message = document.querySelector('#messageInput');
 const queryType = document.querySelector('input[name="query"]:checked'); // radio button
 
 //  submit button
-const submitBtn = document.querySelector('tombol'); 
+const submitBtn = document.querySelector('#tombol'); 
 
 // error
 const firstNameError = firstName.nextElementSibling;
@@ -18,12 +18,6 @@ const messageError = message.nextElementSibling;
 // success
 const successState = document.querySelector(".sucess-state");
 
-
-// REVIEW cors
-app.use(cors({
-  origin: "http:127.0.0.1:5500",
-})
-)
 
 // firstName logic
 const validateFirstName = () => {
@@ -85,6 +79,16 @@ const validateMessage = () => {
   }
 };
 
+// query type logic
+const validateQueryType = () => {
+  const selectedQuery = document.querySelector('input[name="query"]:checked');
+  if (!selectedQuery) {
+    alert("Please select a query type");
+    return false;
+  }
+  return true;
+};
+
 // live validation
 firstName.addEventListener("input", validateFirstName);
 lastName.addEventListener("input", validateLastName);
@@ -94,43 +98,69 @@ message.addEventListener("input", validateMessage);
 // form submit
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
-
-  //disable all form interfaces
+  console.log("Form submitted");
 
   const isFirstNameValid = validateFirstName();
   const isLastNameValid = validateLastName();
   const isEmailValid = validateEmail();
   const isMessageValid = validateMessage();
+  const isQueryTypeValid = validateQueryType();
 
-  if (isFirstNameValid && isLastNameValid && isEmailValid && isMessageValid) {
+  const selectedQuery = document.querySelector('input[name="query"]:checked');
 
-    // Accessing CMS through API 
-    const api = await fetch('http://localhost:8045/items/form_contact',{
-      // mengirimkan data terbaru ke cms
-      method:"POST",
-      headers:{
-        // static token CMS 
-        Authorization:"Bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e",
-      },
-      body:{
-        // key name from cms form contact field -> images\form-contact-field.jpeg
-        // value from id 
-        "first_name": firstName ,
-        "last_name": lastName,
-        "email": email,
-        "message":message,
-        "query_type" : queryType
-    }
-    });
+  if (isFirstNameValid && isLastNameValid && isEmailValid && isMessageValid && selectedQuery) {
 
-    if(api.ok){
-      successState.style.display = "block";
-      form.reset();
+    submitBtn.disabled = true; // Disable the submit button
+    submitBtn.textContent = "Submitting...";
+    
+    try {
+      // Accessing CMS through API 
+      const api = await fetch('http://localhost:8045/items/form_contact',{
+        // mengirimkan data terbaru ke cms
+        method:"POST",
+        headers:{
+          // static token CMS 
+          "Content-Type": "application/json",
+          "Authorization" : "bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e",
+        },
+        body: JSON.stringify({
+          // key name from cms form contact field -> images\form-contact-field.jpeg
+          // value from id 
+          "first_name": firstName.value.trim(),
+          "last_name": lastName.value.trim(),
+          "email": email.value.trim(),
+          "message":message.value.trim(),
+          "query_type" : selectedQuery.value, 
+        }),
+      });
 
-      setTimeout(() => {
-        successState.style.display = "none";
-      }, 3000);
+      loadingOverlay.remove(); // Remove the loading overlay
+
+      if(api.ok){
+        successState.style.display = "block";
+        form.reset();
+
+        setTimeout(() => { 
+          successState.style.display = "none";
+        }, 3000);
+      } else {
+        console.error("API Error:", api.status, api.statusText);
+      }
+    } catch (error) {
+      console.error("Fetch Error:", error);
+    } finally {
+      submitBtn.disabled = false; // Re-enable the submit button
+      submitBtn.textContent = "Submit"; // Reset button text  
     }
     
+  } else {
+    console.log("Form validation failed. Please check the fields.");
   }
 });
+
+
+// CORS_ENABLED: "true"
+// CORS_ORIGIN: "true"
+// CORS_METHODS: "GET,POST,PATCH,DELETE,OPTIONS"
+// CORS_ALLOWED_HEADERS: "Content-Type,Authorization"
+// CORS_CREDENTIALS: "true"
