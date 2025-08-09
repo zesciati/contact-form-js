@@ -115,7 +115,7 @@ form.addEventListener("submit", async function (e) {
     
     try {
       // Accessing CMS through API 
-      const api = await fetch('http://localhost:8045/items/form_contact',{
+      const api = await fetch('https://directus-contact-form.zakyabiyyu.com/items/form_contact',{
         // mengirimkan data terbaru ke cms
         method:"POST",
         headers:{

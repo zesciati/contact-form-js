@@ -5,8 +5,11 @@
 - [x] ubah static token yang terbaru
 - [x] Membuat body yang dinamis
 - [x] menambahkan id submit btn
-- [ ] mengirimkan value form dari html dengan submit button
-- [ ] buat loading bar 
+- [x] mengirimkan value form dari html dengan submit button
+- [x] buat loading bar 
+- [x] membuat tunnel untuk directus contact form
+- [x] mengganti url fetch dengan url tunnel directus contact form
+- [ ] 
 
 ### Pertanyaan
 
