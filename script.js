@@ -121,7 +121,7 @@ form.addEventListener("submit", async function (e) {
         headers:{
           // static token CMS 
           "Content-Type": "application/json",
-          "Authorization" : "bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e",
+          "Authorization" : "Bearer 2RKrXK3X9ntyBZX3tesRiXW_YCnhzs2e",
         },
         body: JSON.stringify({
           // key name from cms form contact field -> images\form-contact-field.jpeg
