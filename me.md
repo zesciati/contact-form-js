@@ -9,7 +9,7 @@
 - [x] buat loading bar 
 - [x] membuat tunnel untuk directus contact form
 - [x] mengganti url fetch dengan url tunnel directus contact form
-- [ ] 
+- [x] Berhasil
 
 ### Pertanyaan
 
@@ -19,6 +19,7 @@
 4. menghentikan data yang sama itu dihentikan di frontend atau backend?
 5. Apakah api dengan metode post sudah bisa langsung mengirimkan ke cms?
 6. nama lain body pada const api?
+7. bikin akses ke directus dengan application cloudflare zero trust?
 
 ### What I learned
 

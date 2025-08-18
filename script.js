@@ -4,7 +4,9 @@ const firstName = document.querySelector('#firstnameInput');
 const lastName = document.querySelector('#lastnameInput');
 const email = document.querySelector('#emailInput');
 const message = document.querySelector('#messageInput');
-const queryType = document.querySelector('input[name="query"]:checked'); // radio button
+const queryBox = document.querySelector('input[name="query"]');
+// const queryType = document.querySelector('input[name="query"]:checked'); // radio button
+
 
 //  submit button
 const submitBtn = document.querySelector('#tombol'); 
@@ -14,6 +16,7 @@ const firstNameError = firstName.nextElementSibling;
 const lastNameError = lastName.nextElementSibling;
 const emailError = email.nextElementSibling;
 const messageError = message.nextElementSibling;
+const queryError = document.querySelector('#errorQuery');
 
 // success
 const successState = document.querySelector(".sucess-state");
@@ -83,10 +86,15 @@ const validateMessage = () => {
 const validateQueryType = () => {
   const selectedQuery = document.querySelector('input[name="query"]:checked');
   if (!selectedQuery) {
-    alert("Please select a query type");
+    // alert("Please select a query type");
+    queryError.textContent = " This Radio button is required";
+    queryError.style.display = "block";
     return false;
+  }else{
+    queryError.textContent = "";
+    queryError.style.display = "none";
+    return true;
   }
-  return true;
 };
 
 // live validation
@@ -94,6 +102,8 @@ firstName.addEventListener("input", validateFirstName);
 lastName.addEventListener("input", validateLastName);
 email.addEventListener("input", validateEmail);
 message.addEventListener("input", validateMessage);
+queryBox.addEventListener("change",validateQueryType);
+
 
 // form submit
 form.addEventListener("submit", async function (e) {
@@ -104,7 +114,7 @@ form.addEventListener("submit", async function (e) {
   const isLastNameValid = validateLastName();
   const isEmailValid = validateEmail();
   const isMessageValid = validateMessage();
-  const isQueryTypeValid = validateQueryType();
+  // const isQueryTypeValid = validateQueryType();
 
   const selectedQuery = document.querySelector('input[name="query"]:checked');
 
@@ -134,7 +144,7 @@ form.addEventListener("submit", async function (e) {
         }),
       });
 
-      loadingOverlay.remove(); // Remove the loading overlay
+      // loadingOverlay.remove(); // Remove the loading overlay
 
       if(api.ok){
         successState.style.display = "block";
@@ -147,7 +157,7 @@ form.addEventListener("submit", async function (e) {
         console.error("API Error:", api.status, api.statusText);
       }
     } catch (error) {
-      console.error("Fetch Error:", error);
+      console.error("Fetch Error:", "ada error nih");
     } finally {
       submitBtn.disabled = false; // Re-enable the submit button
       submitBtn.textContent = "Submit"; // Reset button text  
